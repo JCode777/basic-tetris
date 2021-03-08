@@ -9,22 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId;
     let score = 0;
     const colors = [
+        'blue',
         'orange',
-        'red',
-        'purple',
         'green',
-        'blue'
+        'purple',
+        'yellow',
+        'aqua', 
+        'red'
     ];
 
     // The Tetrominoes
-    const lTetromino = [
+    const jTetromino = [
         [1, width+1, width*2+1, 2],
         [width, width+1, width+2, width*2+2],
         [1, width+1, width*2+1, width*2],
         [width, width*2, width*2+1, width*2+2]
     ];
 
-    const zTetromino = [
+    //trying to add another tetromino
+    const lTetromino = [
+        [1, width+1, width*2+1, 0],
+        [width, width+1, width+2, 2],
+        [1, width+1, width*2+1, width*2+2],
+        [width, width+1, width+2, width*2],
+    ];
+
+    const sTetromino = [
         [0, width, width+1, width*2+1],
         [width+1, width+2, width*2, width*2+1],
         [0, width, width+1, width*2+1],
@@ -52,7 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         [width, width+1, width+2, width+3]
     ];
 
-    const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
+    //trying to add another tetromino
+    const zTetromino = [
+        [2, width+2, width+1, width*2+1],
+        [0, 1, width+1, width+2],
+        [2, width+2, width+1, width*2+1],
+        [0, 1, width+1, width+2]
+    ];
+
+    const theTetrominoes = [jTetromino, lTetromino, sTetromino, tTetromino, oTetromino, iTetromino, zTetromino];
 
     let currentPosition = 4;
     let currentRotation = 0;
@@ -182,11 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // the Tetrominos without rotations
     const upNextTetrominoes = [
-        [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
-        [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetromino
+        [1, displayWidth+1, displayWidth*2+1, 2], //jTetromino
+        [1, displayWidth+1, displayWidth*2+1, 0], //lTetromino attempt
+        [0, displayWidth, displayWidth+1, displayWidth*2+1], //sTetromino
         [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
         [0, 1, displayWidth, displayWidth+1], //oTetromino
-        [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+        [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1], //iTetromino
+        [2, displayWidth+2, displayWidth+1, displayWidth*2+1] //zTetromino attempt
     ]
 
     // display the shape in the mini-grid display
@@ -260,4 +280,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-//thanks to Ania Kubow for the tutorial on how to build Tetris with Javascript. I added my own styling and a reset button.
+//thanks to Ania Kubow for the tutorial on how to build Tetris with Javascript. I added my own styling, a reset button and two more Tetrominos in order to match the 7 Tetrominos of original Tetris.
