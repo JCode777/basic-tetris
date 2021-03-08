@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextRandom = 0;
     let timerId;
     let score = 0;
+    let myMusic;
     const colors = [
         'blue',
         'orange',
@@ -222,16 +223,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    //Add sound to the game
+    function sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("loop", "preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function(){
+            this.sound.play();
+        }
+        this.stop = function(){
+            this.sound.pause();
+        }    
+    }
+
     //add functionality to the button
     startBtn.addEventListener('click',() => {
         if (timerId) {
             clearInterval(timerId);
             timerId = null;
+            myMusic.stop();
         } else {
             draw();
             timerId = setInterval(moveDown, 1000);
             nextRandom = Math.floor(Math.random()*theTetrominoes.length);
             displayShape();
+            myMusic = new sound('Doodoodoodoo Tetris.mp3');
+            myMusic.play();
         }
     })
 
@@ -280,4 +300,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-//thanks to Ania Kubow for the tutorial on how to build Tetris with Javascript. I added my own styling, a reset button and two more Tetrominos in order to match the 7 Tetrominos of original Tetris.
+//thanks to Ania Kubow for the tutorial on how to build Tetris with Javascript. I added my own styling, a reset button, two more Tetrominos in order to match the 7 Tetrominos of original Tetris and music.
