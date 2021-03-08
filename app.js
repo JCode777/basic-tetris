@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             moveDown();
         }
     }
-    document.addEventListener('keyup', control);
+    document.addEventListener('keydown', control);
 
     // move down function
     function moveDown() {
@@ -300,4 +300,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-//thanks to Ania Kubow for the tutorial on how to build Tetris with Javascript. I added my own styling, a reset button, two more Tetrominos in order to match the 7 Tetrominos of original Tetris and music.
+//thanks to Ania Kubow for the tutorial on how to build Tetris with Javascript. I added my own styling, a reset button, two more Tetrominos in order to match the 7 Tetrominos of original Tetris and music. I also changed the control function to be triggered by a keydown instead of a keyup as this is more like the original controls allowing the pieces to move faster when you hold the key down.
